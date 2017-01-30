@@ -14,4 +14,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <android.support.v7.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect with Facebook"
+        android:src = "@drawable/btn_facebook" />
+
+    <android.support.v7.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect with Facebook"
+        android:src = "@drawable/btn_google" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_facebook"
+        android:src="@drawable/btn_facebook"
+        android:maxHeight="50dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_google"
+        android:src="@drawable/btn_google"
+        android:maxHeight="50dp"/>
+
+
 </RelativeLayout>

@@ -1,13 +1,67 @@
 package com.example.java.authorized;
 
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
+import java.util.Arrays;
+
+public class MainActivity extends FragmentActivity {
+
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+// App code
+                    }
+
+                    @Override
+                    public void onCancel() {
+// App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+// App code
+                    }
+                });
+
+        ImageView btn_facebook = (ImageView) findViewById(R.id.btn_facebook);
+        btn_facebook.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this,
+                                                        Arrays.asList("public_profile"));
+                                            }
+                                        }
+
+        );
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
