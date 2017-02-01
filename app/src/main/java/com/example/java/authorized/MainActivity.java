@@ -15,12 +15,16 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Arrays;
 
 public class MainActivity extends FragmentActivity {
 
     CallbackManager callbackManager;
+    GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,6 @@ public class MainActivity extends FragmentActivity {
 
         );
 
-
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
 
@@ -79,6 +82,14 @@ public class MainActivity extends FragmentActivity {
                 // App code
             }
         });
+
+       // GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+         //       .requestEmail()
+           //     .build();
+        //mGoogleApiClient = new GoogleApiClient.Builder(this)
+          //      .enableAutoManage(this, this /* OnConnectionFailedListener */)
+            //    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+             //   .build();
     }
 
 
